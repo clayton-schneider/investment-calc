@@ -8,12 +8,12 @@
 </template>
 
 <script>
+import db from '@/firebase.js'
 
 export default {
   name: 'App',
-
-  data: () => ({
-    //
-  }),
+  async created() {
+    this.$store.dispatch('LOAD_PROPERTIES')
+  }
 };
 </script>

@@ -1,8 +1,9 @@
 <template>
   <div class="home">
-    <h1 class="text-center">Rental Calculator</h1>
+    <h1 class="text-center">Investor</h1>
     <v-row justify="center">
-      <v-btn to="/rental">Begin</v-btn>
+      <v-btn to="/rental">Sign Up</v-btn>
+      <v-btn to="/rental">Log In</v-btn>
     </v-row>
   </div>
 </template>

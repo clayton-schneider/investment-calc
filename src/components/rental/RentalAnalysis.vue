@@ -16,10 +16,11 @@
 
 <script>
 export default {
+    props: ['numbers'],
     computed: {
-        income() { return this.$store.state.income },
-        expenses() { return this.$store.state.expenses },
-        costs() { return this.$store.state.costs },
+        income() { return this.numbers.income },
+        expenses() { return this.numbers.expenses },
+        costs() { return this.numbers.costs },
         cashflow() { return this.total(this.income.list) - this.total(this.expenses.list) },
         ROI() { 
             const roi = this.cashflow / this.total(this.costs.list) * 100
