@@ -1,5 +1,8 @@
 <template>
   <div class="income">
+    <v-row justify="center">
+      <h1>Rental Analysis</h1>
+    </v-row>
     <RentalWizard :property="property" mode="create" />
   </div>
 </template>

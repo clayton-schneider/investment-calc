@@ -1,7 +1,10 @@
 <template>
     <div v-if="property">
-        <h1>{{property.nickname}}</h1>
-        <v-btn to="/">Back</v-btn>
+        <v-row align="center">         
+            <h1 class="mx-5">{{property.nickname}}</h1>
+            <v-btn outlined to="/">Back</v-btn>
+        </v-row>
+
         <RentalWizard :property="property" mode="edit"/>
     </div>
 </template>

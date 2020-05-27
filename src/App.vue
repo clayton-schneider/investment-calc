@@ -1,16 +1,26 @@
 <template>
   <v-app>
-    <v-content class="my-10">
-      <router-view></router-view>
+    <Nav />
+    
+    <v-content>
+      <v-container>
+        <router-view></router-view>
+      </v-container>
     </v-content>
+
+    <MobileNav />
       
   </v-app>
 </template>
 
 <script>
-import db from '@/firebase.js'
-
+import Nav from '@/components/Nav.vue'
+import MobileNav from '@/components/MobileNav.vue'
 export default {
+  components: {
+    Nav,
+    MobileNav
+  },
   name: 'App',
   async created() {
     this.$store.dispatch('LOAD_PROPERTIES')
