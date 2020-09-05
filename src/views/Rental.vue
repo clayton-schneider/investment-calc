@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import RentalWizard from '@/components/RentalWizard.vue'
+import RentalWizard from '@/components/RentalWizard.vue';
 export default {
   components: { RentalWizard },
   data() {
@@ -18,23 +18,42 @@ export default {
         nickname: '',
         money: {
           income: {
-            list: [ { name: 'Income', amount: '' }, { name: 'Other', amount: ''} ],
-            total: ''
+            list: [
+              { name: 'Income', amount: '' },
+              { name: 'Other', amount: '' },
+            ],
+            total: '',
           },
           expenses: {
-            list: [ { name: 'Tax', amount: '' }, { name: 'Insurance', amount: '' }, 
-            { name: 'Utilities', amount: '' }, { name: 'HOA', amount: '' }, {name: 'Property Care', amount: ''},
-            { name: 'Vacancy', amount: '' }, { name: 'Repairs', amount: '' }, {name: 'Capital Expenditure', amount: '' },
-            { name: 'Property Management', amount: '' } , { name: 'Mortage', amount: '' } ],
-            total: ''
+            list: [
+              { name: 'Tax', amount: '' },
+              { name: 'Insurance', amount: '' },
+              { name: 'Utilities', amount: '' },
+              { name: 'HOA', amount: '' },
+              { name: 'Property Care', amount: '' },
+              { name: 'Vacancy', amount: '' },
+              { name: 'Repairs', amount: '' },
+              { name: 'Capital Expenditure', amount: '' },
+              { name: 'Property Management', amount: '' },
+              { name: 'Mortage', amount: '' },
+            ],
+            total: '',
           },
           costs: {
-            list: [ {name: 'Property', amount: ''}, { name: 'Rehab', amount: '' }, { name: 'Misc', amount: '' } ],
-            total: ''
-          }
-        }
-      }
-    }
-  }
-}
+            list: [
+              { name: 'Property', amount: '' },
+              { name: 'Rehab', amount: '' },
+              { name: 'Misc', amount: '' },
+            ],
+            total: '',
+          },
+          analysis: {
+            cashflow: '',
+            roi: '',
+          },
+        },
+      },
+    };
+  },
+};
 </script>

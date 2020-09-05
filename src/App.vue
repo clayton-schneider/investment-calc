@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Nav />
-    
+
     <v-content>
       <v-container>
         <router-view></router-view>
@@ -9,21 +9,20 @@
     </v-content>
 
     <MobileNav />
-      
   </v-app>
 </template>
 
 <script>
-import Nav from '@/components/Nav.vue'
-import MobileNav from '@/components/MobileNav.vue'
+import Nav from '@/components/Nav.vue';
+import MobileNav from '@/components/MobileNav.vue';
 export default {
   components: {
     Nav,
-    MobileNav
+    MobileNav,
   },
   name: 'App',
   async created() {
-    this.$store.dispatch('LOAD_PROPERTIES')
-  }
+    this.$store.dispatch('LOAD_PROPERTIES');
+  },
 };
 </script>

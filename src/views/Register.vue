@@ -1,45 +1,60 @@
 <template>
-    <div>
-        <v-card v-if="!registered" class="mx-auto" max-width="500">
-            <v-card-title>Register</v-card-title>
-            <v-card-text>
-                <v-form>
-                    <v-text-field placeholder="name"></v-text-field>
-                    <v-text-field placeholder="email"></v-text-field>
-                    <v-text-field placeholder="password"></v-text-field>
-                </v-form>
-            </v-card-text>
-            <v-card-actions>
-                <v-btn @click="registered = true">Register</v-btn>
-            </v-card-actions>
-        </v-card>
-        <v-card v-if="registered && !team" class="mx-auto" max-width="500">
-            <v-card-title>Is this a personal or team account?</v-card-title>
-
-            <v-card-actions>
-                <v-btn to="/">Personal</v-btn>
-                <v-btn @click="team = true">Team</v-btn>
-            </v-card-actions>
-        </v-card>
-        <v-card v-if="registered && team" class="mx-auto" max-width="500">
-            <v-card-title>Invite team members</v-card-title>
-            <v-card-text>
-                <p>Link</p>
-            </v-card-text>
-            <v-card-actions>
-                <v-btn to="/">Next</v-btn>
-            </v-card-actions>
-        </v-card>
-    </div>
+  <div>
+    <v-card v-if="!registered" class="mx-auto" max-width="500">
+      <v-card-title>Register</v-card-title>
+      <v-card-text>
+        <v-form>
+          <v-text-field
+            v-model="email"
+            type="email"
+            label="email"
+          ></v-text-field>
+          <v-text-field
+            v-model="password"
+            label="password"
+            type="password"
+            @keydown.enter="register"
+          ></v-text-field>
+          <p v-if="feedback" class="red--text">{{ feedback }}</p>
+        </v-form>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn @click="register">Register</v-btn>
+      </v-card-actions>
+    </v-card>
+  </div>
 </template>
 
 <script>
+import db from '@/firebase.js';
+import firebase from 'firebase';
 export default {
-    data() {
-        return {
-            registered: false,
-            team: false
-        }
-    }
-}
+  name: 'Register',
+  data() {
+    return {
+      registered: false,
+      team: false,
+      email: null,
+      password: null,
+      feedback: null,
+    };
+  },
+  methods: {
+    register() {
+      if (this.email && this.password) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then(cred => {
+            console.log(cred.user.uid);
+            this.$store.commit('login', cred.user.uid);
+            this.$router.push({ name: 'Rental' });
+          })
+          .catch(err => (this.feedback = err.message));
+      } else {
+        this.feedback = 'You must enter all fields';
+      }
+    },
+  },
+};
 </script>
